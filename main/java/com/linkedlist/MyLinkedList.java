@@ -8,7 +8,7 @@ public class MyLinkedList {
         this.head=null;
         this.tail=null;
     }
-
+    //method to add new node to linked list
     public void add(INode newNode) {
         if(this.tail == null) {
             this.tail=newNode;
@@ -22,7 +22,7 @@ public class MyLinkedList {
             this.head.setNext(tempNode);
         }
     }
-
+    // method to display node data
     public void printMyNodes() {
         StringBuffer myNodes = new StringBuffer("My Nodes : ");
         INode tempNode = head;
@@ -36,6 +36,7 @@ public class MyLinkedList {
         System.out.println(myNodes);
     }
 
+    //method to append node at end
     public void append(INode newNode) {
         if(this.head == null) {
             this.head=newNode;
@@ -47,5 +48,12 @@ public class MyLinkedList {
             this.tail.setNext(newNode);
             this.tail = newNode ;
         }
+    }
+
+    //method to insert node between two nodes
+    public void insert(INode myNode, INode newNode) {
+        INode tempNode = myNode.getNext();
+        myNode.setNext(newNode);
+        newNode.setNext(tempNode);
     }
 }
