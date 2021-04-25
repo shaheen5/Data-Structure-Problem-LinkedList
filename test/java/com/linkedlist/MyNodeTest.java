@@ -92,4 +92,21 @@ public class MyNodeTest {
                 myLinkedList.tail.equals(mySecondNode);
         Assert.assertTrue(result);
     }
+    @Test
+    public void givenKey_WhenSearched_ShouldReturnNode_HavingSameKey() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        INode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(70);
+        MyLinkedList myLinkedList=new MyLinkedList();
+        myLinkedList.add(myFirstNode);
+        myLinkedList.append(mySecondNode);
+        myLinkedList.append(myThirdNode);
+        INode searchedNode = myLinkedList.search(mySecondNode.getKey());
+        myLinkedList.printMyNodes();
+        boolean result = myLinkedList.head.equals(myFirstNode) &&
+                         myLinkedList.head.getNext().equals(mySecondNode) &&
+                         myLinkedList.tail.equals(myThirdNode) &&
+                         searchedNode.equals(mySecondNode);
+        Assert.assertTrue(result);
+    }
 }
