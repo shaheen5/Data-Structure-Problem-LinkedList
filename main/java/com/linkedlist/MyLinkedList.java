@@ -62,4 +62,14 @@ public class MyLinkedList {
         this.head=head.getNext();
         return tempNode;
     }
+    //method to delete last element 
+    public INode popLast() {
+        INode tempNode=this.head;
+        while(!tempNode.getNext().equals(tail)){
+            tempNode=tempNode.getNext();
+        }
+        this.tail=tempNode;
+        tempNode=tempNode.getNext();
+        return tempNode;
+    }
 }
