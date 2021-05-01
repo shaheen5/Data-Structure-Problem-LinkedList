@@ -26,8 +26,8 @@ public class MyNodeTest {
         myLinkedList.add(myThirdNode);
         myLinkedList.printMyNodes();
         boolean result = myLinkedList.head.equals(myThirdNode) &&
-                myLinkedList.head.getNext().equals(mySecondNode) &&
-                myLinkedList.tail.equals(myFirstNode);
+                         myLinkedList.head.getNext().equals(mySecondNode) &&
+                         myLinkedList.tail.equals(myFirstNode);
         Assert.assertTrue(result);
     }
     @Test
@@ -41,8 +41,8 @@ public class MyNodeTest {
         myLinkedList.append(myThirdNode);
         myLinkedList.printMyNodes();
         boolean result = myLinkedList.head.equals(myFirstNode) &&
-                myLinkedList.head.getNext().equals(mySecondNode) &&
-                myLinkedList.tail.equals(myThirdNode);
+                         myLinkedList.head.getNext().equals(mySecondNode) &&
+                         myLinkedList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
     @Test
@@ -56,8 +56,8 @@ public class MyNodeTest {
         myLinkedList.insert(myFirstNode,mySecondNode);
         myLinkedList.printMyNodes();
         boolean result = myLinkedList.head.equals(myFirstNode) &&
-                myLinkedList.head.getNext().equals(mySecondNode) &&
-                myLinkedList.tail.equals(myThirdNode);
+                         myLinkedList.head.getNext().equals(mySecondNode) &&
+                         myLinkedList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
     @Test
@@ -72,8 +72,8 @@ public class MyNodeTest {
         INode poppedNode = myLinkedList.pop();
         myLinkedList.printMyNodes();
         boolean result = poppedNode.equals(myFirstNode) &&
-                myLinkedList.head.equals(mySecondNode) &&
-                myLinkedList.tail.equals(myThirdNode);
+                         myLinkedList.head.equals(mySecondNode) &&
+                         myLinkedList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
     @Test
@@ -88,8 +88,8 @@ public class MyNodeTest {
         INode poppedNode = myLinkedList.popLast();
         myLinkedList.printMyNodes();
         boolean result = poppedNode.equals(myThirdNode) &&
-                myLinkedList.head.equals(myFirstNode) &&
-                myLinkedList.tail.equals(mySecondNode);
+                         myLinkedList.head.equals(myFirstNode) &&
+                         myLinkedList.tail.equals(mySecondNode);
         Assert.assertTrue(result);
     }
     @Test
@@ -101,12 +101,31 @@ public class MyNodeTest {
         myLinkedList.add(myFirstNode);
         myLinkedList.append(mySecondNode);
         myLinkedList.append(myThirdNode);
-        INode searchedNode = myLinkedList.search(mySecondNode.getKey());
+        INode searchedNode = myLinkedList.search(30);
         myLinkedList.printMyNodes();
         boolean result = myLinkedList.head.equals(myFirstNode) &&
                          myLinkedList.head.getNext().equals(mySecondNode) &&
                          myLinkedList.tail.equals(myThirdNode) &&
                          searchedNode.equals(mySecondNode);
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void givenKey_WhenSearched_ShouldInsertNodeAfterIt() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        INode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(70);
+        MyNode<Integer> myFourthNode = new MyNode<>(40);
+        MyLinkedList myLinkedList=new MyLinkedList();
+        myLinkedList.add(myFirstNode);
+        myLinkedList.append(mySecondNode);
+        myLinkedList.append(myThirdNode);
+        INode searchedNode = myLinkedList.search(30);
+        myLinkedList.insert(searchedNode,myFourthNode);
+        myLinkedList.printMyNodes();
+        boolean result = myLinkedList.head.equals(myFirstNode) &&
+                         myLinkedList.head.getNext().equals(mySecondNode) &&
+                         mySecondNode.getNext().equals(myFourthNode) &&
+                         myLinkedList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
 }
