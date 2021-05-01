@@ -128,4 +128,20 @@ public class MyNodeTest {
                          myLinkedList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
+    @Test
+    public void givenKey_WhenSearched_ShouldDeleteNodeHavingKey_AndReturnListSize() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        INode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(40);
+        MyNode<Integer> myFourthNode = new MyNode<>(70);
+        MyLinkedList myLinkedList=new MyLinkedList();
+        myLinkedList.add(myFirstNode);
+        myLinkedList.append(mySecondNode);
+        myLinkedList.append(myThirdNode);
+        myLinkedList.append(myFourthNode);
+        myLinkedList.delete(40);
+        myLinkedList.printMyNodes();
+        int listSize = myLinkedList.size();
+        Assert.assertEquals(3,listSize);
+    }
 }

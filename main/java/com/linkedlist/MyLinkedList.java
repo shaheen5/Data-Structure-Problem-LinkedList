@@ -72,7 +72,7 @@ public class MyLinkedList {
         tempNode=tempNode.getNext();
         return tempNode;
     }
-
+    //method to search a node having given key value
     public INode search(Integer key) {
         INode tempNode=head;
         INode searchedNode = null;
@@ -82,5 +82,29 @@ public class MyLinkedList {
             tempNode=tempNode.getNext();
         }
         return searchedNode;
+    }
+    //method to delete a node having given key value
+    public void delete(Integer key) {
+        INode currentNode=this.head;
+        INode previousNode=this.head;
+        if(currentNode.getKey() == key) {
+            this.head = currentNode.getNext();
+            return;
+        }
+        while(!(currentNode.getKey() == key)){
+            previousNode=currentNode;
+            currentNode=currentNode.getNext();
+        }
+        previousNode.setNext(currentNode.getNext());
+    }
+    //method to find size of linked list
+    public int size() {
+        INode tempNode = this.head;
+        int count = 0;
+        while(tempNode != null){
+            tempNode=tempNode.getNext();
+            count++;
+        }
+        return count;
     }
 }
