@@ -1,6 +1,6 @@
 package com.linkedlist;
 
-public class MyNode<K> implements INode<K>{
+public class MyNode<K extends Comparable<K>> implements INode<K> {
     private K key;
     private MyNode next;
 
@@ -25,5 +25,10 @@ public class MyNode<K> implements INode<K>{
     @Override
     public void setNext(INode next) {
         this.next= (MyNode<K>) next;
+    }
+
+    @Override
+    public int compareTo(INode<K> myNode) {
+        return this.getKey().compareTo(myNode.getKey());
     }
 }

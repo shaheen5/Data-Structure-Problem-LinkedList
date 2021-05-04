@@ -95,7 +95,7 @@ public class MyNodeTest {
     @Test
     public void givenKey_WhenSearched_ShouldReturnNode_HavingSameKey() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
-        INode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
         MyNode<Integer> myThirdNode = new MyNode<>(70);
         MyLinkedList myLinkedList=new MyLinkedList();
         myLinkedList.add(myFirstNode);
@@ -112,7 +112,7 @@ public class MyNodeTest {
     @Test
     public void givenKey_WhenSearched_ShouldInsertNodeAfterIt() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
-        INode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
         MyNode<Integer> myThirdNode = new MyNode<>(70);
         MyNode<Integer> myFourthNode = new MyNode<>(40);
         MyLinkedList myLinkedList=new MyLinkedList();
@@ -131,7 +131,7 @@ public class MyNodeTest {
     @Test
     public void givenKey_WhenSearched_ShouldDeleteNodeHavingKey_AndReturnListSize() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
-        INode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
         MyNode<Integer> myThirdNode = new MyNode<>(40);
         MyNode<Integer> myFourthNode = new MyNode<>(70);
         MyLinkedList myLinkedList=new MyLinkedList();
@@ -143,5 +143,23 @@ public class MyNodeTest {
         myLinkedList.printMyNodes();
         int listSize = myLinkedList.size();
         Assert.assertEquals(3,listSize);
+    }
+    @Test
+    public void given4Numbers_WhenAddedToList_ShouldAddNodes_InAscendingOrder(){
+        MyNode<Integer> myFirstNode=new MyNode<>(56);
+        MyNode<Integer> mySecondNode=new MyNode<>(30);
+        MyNode<Integer> myThirdNode=new MyNode<>(40);
+        MyNode<Integer> myFourthNode=new MyNode<>(70);
+        SortedLinkedList sortedLinkedList = new SortedLinkedList();
+        sortedLinkedList.add(myFirstNode);
+        sortedLinkedList.add(mySecondNode);
+        sortedLinkedList.add(myThirdNode);
+        sortedLinkedList.add(myFourthNode);
+        sortedLinkedList.displayNodesInList();
+        boolean result = sortedLinkedList.head.equals(mySecondNode) &&
+                         sortedLinkedList.head.getNext().equals(myThirdNode) &&
+                         myThirdNode.getNext().equals(myFirstNode) &&
+                         myFirstNode.getNext().equals(myFourthNode);
+        Assert.assertTrue(result);
     }
 }
